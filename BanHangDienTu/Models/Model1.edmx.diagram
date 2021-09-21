@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="88321c1b4ed24459b06673cafc7e6e2c" Name="Diagram1">
+        <EntityTypeShape EntityType="banhangdientuModel.chitiethoadon" Width="1.5" PointX="12.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.chitietphieunhaphang" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.chucvu" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.giohang" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.hoadon" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.khachhang" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.loaisanpham" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.nhacungcap" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.nhanvien" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.phieugiaohang" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.phieunhaphang" Width="1.5" PointX="10.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.sanpham" Width="1.5" PointX="8.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.trangthai" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangdientuModel.trangthaihoadon" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="banhangdientuModel.FK__chitietho__hoado__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__chitietho__sanph__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__chitietph__phieu__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__chitietph__sanph__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__chucvu__trangtha__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__nhanvien__chucvu__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__giohang__khachha__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__giohang__sanpham__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__hoadon__khachhan__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__hoadon__nhanvien__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__hoadon__trangtha__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__phieugiao__hoado__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__khachhang__trang__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__loaisanph__trang__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__sanpham__loaisan__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__nhacungca__trang__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__phieunhap__ncc_i__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__nhanvien__trangt__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__phieunhap__nhanv__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangdientuModel.FK__sanpham__trangth__33D4B598" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

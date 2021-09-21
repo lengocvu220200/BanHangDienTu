@@ -1,0 +1,111 @@
+﻿@model IEnumerable<BanHangDienTu.Models.sanpham>
+
+@{
+    ViewBag.Title = "LoaiSanPham";
+    Layout = "~/Views/Shared/_LayoutCustomize.cshtml";
+}
+
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    @foreach (var item in ViewBag.Model)
+                    {
+                        <h1>@item.loaisanpham.loaisanpham_ten</h1>
+                        break;
+                    }
+                    <p>Cùng trải nghiệm các sản phẩm đọc quyền đến từ cửa hàng.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row special-list">
+            @foreach (var item in ViewBag.Model)
+            {
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover" style="height:250px; ">
+                            <div class="type-lb">
+
+                            </div>
+                            <a href="@Url.Action("ChiTietSanPham","SanPham", new { id = item.sanpham_id } )"><img src="~/asset/images/@item.sanpham_urlhinhanh" class="img-fluid" alt="Image"></a>
+
+                        </div>
+                        <div class="why-text">
+                            <h4>@item.sanpham_ten</h4>
+                            <h5> @String.Format("{0:0,0}", item.sanpham_dongia) VNĐ</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-4 offset-9">
+        <ul class="pagination">
+            @{
+                int idTheLoai = ViewBag.IdTheLoai;
+                int numberPage = ViewBag.numberPage;
+                int pageCurrent = ViewBag.pageCurrent;
+                int offset = 8;//number display page
+
+                //<li>@numberPage tong</li>
+                //config FirstLink
+                if (pageCurrent > 1)
+                {
+                    int prevPage = pageCurrent - 1;
+                    var PrevLink = new Dictionary<string, string> { { "page", prevPage.ToString() } };
+                    //<li><a asp-controller="Product" asp-action="Index" asp-all-route-data="PrevLink">Prev Link</a></li>
+                    <a href="@Url.Action("LoaiSanPham","SanPham", new { idTheLoai= idTheLoai, page = prevPage})"><li class="btn hvr-hover" style="color:white">Prev Link</li></a>
+                }
+
+                int from = pageCurrent - offset;
+                int to = pageCurrent + offset;
+                if (from <= 0)
+                {
+                    from = 1;
+                    to = offset * 2;
+                }
+
+
+                if (to > numberPage)
+                {
+                    to = numberPage;
+                }
+
+                int i;
+                for (i = from; i <= to; i++)
+                {
+
+                    if (pageCurrent == i)
+                    {
+                        //<li class="active"><a asp-controller="SanPham" asp-action="LoaiSanPham" asp-all-route-data="parms">@i</a></li>
+                        <a href="@Url.Action("LoaiSanPham","SanPham", new { idTheLoai= idTheLoai, page = @i})"><li class="btn hvr-hover" style="background-color:orangered; color:white">@i</li></a>
+                    }
+                    else
+                    {
+                        //<li><a asp-controller="SanPham" asp-action="LoaiSanPham" asp-all-route-data="parms">@i</a></li>
+                        <a href="@Url.Action("LoaiSanPham","SanPham", new { idTheLoai= idTheLoai, page = @i})"><li class="btn hvr-hover" style="color:white">@i</li></a>
+                    }
+
+                }
+
+                if (pageCurrent < numberPage - (to / 2))
+                {
+                    <li><a>...</a></li>
+                    var LastLink = new Dictionary<string, string> { { "page", numberPage.ToString() } };
+                    //<li><a asp-controller="SanPham" asp-action="LoaiSanPham" asp-all-route-data="LastLink">Last Link</a></li>
+                    <a href="@Url.Action("LoaiSanPham","SanPham", new { idTheLoai= idTheLoai, page = LastLink})"><li class="btn hvr-hover" style="color:white">Last Link</li></a>
+                }
+
+                if (pageCurrent < numberPage)
+                {
+                    int nextPage = pageCurrent + 1;
+                    var NextLink = new Dictionary<string, string> { { "page", nextPage.ToString() } };
+                    //<li><a asp-controller="SanPham" asp-action="LoaiSanPham" asp-all-route-data="NextLink">Next Link</a></li>
+                    <a href="@Url.Action("LoaiSanPham","SanPham", new { idTheLoai= idTheLoai, page = nextPage})"><li class="btn hvr-hover" style="color:white">Next Link</li></a>
+                }
+            }
+        </ul>
+    </div>
+</div>
+

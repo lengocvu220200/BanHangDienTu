@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="banhangdientuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="chitiethoadon">
+    <Key>
+      <PropertyRef Name="chitiethd_id" />
+    </Key>
+    <Property Name="chitiethd_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hoadon_id" Type="int" Nullable="false" />
+    <Property Name="sanpham_id" Type="int" Nullable="false" />
+    <Property Name="chitiethd_soluong" Type="int" Nullable="false" />
+    <Property Name="chitiethd_thanhtien" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="chitietphieunhaphang">
+    <Key>
+      <PropertyRef Name="chitietpnh_id" />
+    </Key>
+    <Property Name="chitietpnh_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="phieunhaphang_id" Type="int" Nullable="false" />
+    <Property Name="sanpham_id" Type="int" Nullable="false" />
+    <Property Name="soluong" Type="int" Nullable="false" />
+    <Property Name="dongia" Type="float" Nullable="false" />
+    <Property Name="thanhtien" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="chucvu">
+    <Key>
+      <PropertyRef Name="chucvu_id" />
+    </Key>
+    <Property Name="chucvu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="chucvu_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="giohang">
+    <Key>
+      <PropertyRef Name="giohang_id" />
+    </Key>
+    <Property Name="giohang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="khachhang_id" Type="int" Nullable="false" />
+    <Property Name="sanpham_id" Type="int" Nullable="false" />
+    <Property Name="giohang_soluong" Type="int" Nullable="false" />
+    <Property Name="giohang_dongia" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="hoadon">
+    <Key>
+      <PropertyRef Name="hoadon_id" />
+    </Key>
+    <Property Name="hoadon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nhanvien_id" Type="int" />
+    <Property Name="khachhang_id" Type="int" Nullable="false" />
+    <Property Name="hoadon_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="hoadon_tongtien" Type="float" />
+    <Property Name="trangthaihoadon_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="khachhang">
+    <Key>
+      <PropertyRef Name="khachhang_id" />
+    </Key>
+    <Property Name="khachhang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="khachhang_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="khachhang_ngaysinh" Type="date" Nullable="false" />
+    <Property Name="khachhang_sdt" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="khachhang_diachi" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="khachhang_email" Type="varchar" MaxLength="100" />
+    <Property Name="khachhang_matkhau" Type="varchar" MaxLength="50" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="loaisanpham">
+    <Key>
+      <PropertyRef Name="loaisanpham_id" />
+    </Key>
+    <Property Name="loaisanpham_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loaisanpham_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nhacungcap">
+    <Key>
+      <PropertyRef Name="ncc_id" />
+    </Key>
+    <Property Name="ncc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ncc_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ncc_sdt" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="ncc_email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ncc_diachi" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nhanvien">
+    <Key>
+      <PropertyRef Name="nhanvien_id" />
+    </Key>
+    <Property Name="nhanvien_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nhanvien_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="nhanvien_ngaysinh" Type="date" Nullable="false" />
+    <Property Name="nhanvien_sdt" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="nhanvien_email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="nhanvien_matkhau" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="chucvu_id" Type="int" Nullable="false" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="phieugiaohang">
+    <Key>
+      <PropertyRef Name="phieugiaohang_id" />
+    </Key>
+    <Property Name="phieugiaohang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hoadon_id" Type="int" Nullable="false" />
+    <Property Name="phieugiaohang_tennguoinhan" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phieugiaohang_sdtnguoinhan" Type="int" Nullable="false" />
+    <Property Name="phieugiaohang_diachinguoinhan" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="phieugiaohang_thoigiangiaohang" Type="datetime" />
+  </EntityType>
+  <EntityType Name="phieunhaphang">
+    <Key>
+      <PropertyRef Name="phieunhaphang_id" />
+    </Key>
+    <Property Name="phieunhaphang_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nhanvien_id" Type="int" Nullable="false" />
+    <Property Name="ncc_id" Type="int" Nullable="false" />
+    <Property Name="phieunhaphang_ngaylap" Type="datetime" Nullable="false" />
+    <Property Name="phieunhaphang_tongtien" Type="float" />
+  </EntityType>
+  <EntityType Name="sanpham">
+    <Key>
+      <PropertyRef Name="sanpham_id" />
+    </Key>
+    <Property Name="sanpham_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sanpham_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sanpham_mota" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="loaisanpham_id" Type="int" Nullable="false" />
+    <Property Name="sanpham_soluong" Type="int" Nullable="false" />
+    <Property Name="sanpham_dongia" Type="float" Nullable="false" />
+    <Property Name="sanpham_urlhinhanh" Type="nvarchar" MaxLength="200" />
+    <Property Name="trangthai_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trangthai">
+    <Key>
+      <PropertyRef Name="trangthai_id" />
+    </Key>
+    <Property Name="trangthai_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trangthai_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="trangthaihoadon">
+    <Key>
+      <PropertyRef Name="trangthaihoadon_id" />
+    </Key>
+    <Property Name="trangthaihoadon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trangthaihoadon_ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__chitietho__hoado__44FF419A">
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="1" />
+    <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hoadon">
+        <PropertyRef Name="hoadon_id" />
+      </Principal>
+      <Dependent Role="chitiethoadon">
+        <PropertyRef Name="hoadon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chitietho__sanph__45F365D3">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="chitiethoadon" Type="Self.chitiethoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="chitiethoadon">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chitietph__phieu__3D5E1FD2">
+    <End Role="phieunhaphang" Type="Self.phieunhaphang" Multiplicity="1" />
+    <End Role="chitietphieunhaphang" Type="Self.chitietphieunhaphang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="phieunhaphang">
+        <PropertyRef Name="phieunhaphang_id" />
+      </Principal>
+      <Dependent Role="chitietphieunhaphang">
+        <PropertyRef Name="phieunhaphang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chitietph__sanph__3E52440B">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="chitietphieunhaphang" Type="Self.chitietphieunhaphang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="chitietphieunhaphang">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__chucvu__trangtha__267ABA7A">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="chucvu" Type="Self.chucvu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="chucvu">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giohang__khachha__4BAC3F29">
+    <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+    <End Role="giohang" Type="Self.giohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachhang">
+        <PropertyRef Name="khachhang_id" />
+      </Principal>
+      <Dependent Role="giohang">
+        <PropertyRef Name="khachhang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__giohang__sanpham__4CA06362">
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="1" />
+    <End Role="giohang" Type="Self.giohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sanpham">
+        <PropertyRef Name="sanpham_id" />
+      </Principal>
+      <Dependent Role="giohang">
+        <PropertyRef Name="sanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoadon__khachhan__4222D4EF">
+    <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="khachhang">
+        <PropertyRef Name="khachhang_id" />
+      </Principal>
+      <Dependent Role="hoadon">
+        <PropertyRef Name="khachhang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoadon__nhanvien__412EB0B6">
+    <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="0..1" />
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhanvien">
+        <PropertyRef Name="nhanvien_id" />
+      </Principal>
+      <Dependent Role="hoadon">
+        <PropertyRef Name="nhanvien_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__hoadon__trangtha__72C60C4A">
+    <End Role="trangthaihoadon" Type="Self.trangthaihoadon" Multiplicity="1" />
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthaihoadon">
+        <PropertyRef Name="trangthaihoadon_id" />
+      </Principal>
+      <Dependent Role="hoadon">
+        <PropertyRef Name="trangthaihoadon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__khachhang__trang__2D27B809">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="khachhang" Type="Self.khachhang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="khachhang">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__loaisanph__trang__300424B4">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="loaisanpham">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nhacungca__trang__36B12243">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="nhacungcap" Type="Self.nhacungcap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="nhacungcap">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nhanvien__chucvu__29572725">
+    <End Role="chucvu" Type="Self.chucvu" Multiplicity="1" />
+    <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chucvu">
+        <PropertyRef Name="chucvu_id" />
+      </Principal>
+      <Dependent Role="nhanvien">
+        <PropertyRef Name="chucvu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__nhanvien__trangt__2A4B4B5E">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="nhanvien">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__phieugiao__hoado__48CFD27E">
+    <End Role="hoadon" Type="Self.hoadon" Multiplicity="1" />
+    <End Role="phieugiaohang" Type="Self.phieugiaohang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hoadon">
+        <PropertyRef Name="hoadon_id" />
+      </Principal>
+      <Dependent Role="phieugiaohang">
+        <PropertyRef Name="hoadon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__phieunhap__ncc_i__3A81B327">
+    <End Role="nhacungcap" Type="Self.nhacungcap" Multiplicity="1" />
+    <End Role="phieunhaphang" Type="Self.phieunhaphang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhacungcap">
+        <PropertyRef Name="ncc_id" />
+      </Principal>
+      <Dependent Role="phieunhaphang">
+        <PropertyRef Name="ncc_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__phieunhap__nhanv__398D8EEE">
+    <End Role="nhanvien" Type="Self.nhanvien" Multiplicity="1" />
+    <End Role="phieunhaphang" Type="Self.phieunhaphang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nhanvien">
+        <PropertyRef Name="nhanvien_id" />
+      </Principal>
+      <Dependent Role="phieunhaphang">
+        <PropertyRef Name="nhanvien_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__loaisan__32E0915F">
+    <End Role="loaisanpham" Type="Self.loaisanpham" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaisanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="loaisanpham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sanpham__trangth__33D4B598">
+    <End Role="trangthai" Type="Self.trangthai" Multiplicity="1" />
+    <End Role="sanpham" Type="Self.sanpham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="trangthai">
+        <PropertyRef Name="trangthai_id" />
+      </Principal>
+      <Dependent Role="sanpham">
+        <PropertyRef Name="trangthai_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="banhangdientuModelStoreContainer">
+    <EntitySet Name="chitiethoadon" EntityType="Self.chitiethoadon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chitietphieunhaphang" EntityType="Self.chitietphieunhaphang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chucvu" EntityType="Self.chucvu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="giohang" EntityType="Self.giohang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hoadon" EntityType="Self.hoadon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loaisanpham" EntityType="Self.loaisanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhacungcap" EntityType="Self.nhacungcap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nhanvien" EntityType="Self.nhanvien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phieugiaohang" EntityType="Self.phieugiaohang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="phieunhaphang" EntityType="Self.phieunhaphang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sanpham" EntityType="Self.sanpham" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trangthai" EntityType="Self.trangthai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trangthaihoadon" EntityType="Self.trangthaihoadon" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__chitietho__hoado__44FF419A" Association="Self.FK__chitietho__hoado__44FF419A">
+      <End Role="hoadon" EntitySet="hoadon" />
+      <End Role="chitiethoadon" EntitySet="chitiethoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chitietho__sanph__45F365D3" Association="Self.FK__chitietho__sanph__45F365D3">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="chitiethoadon" EntitySet="chitiethoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chitietph__phieu__3D5E1FD2" Association="Self.FK__chitietph__phieu__3D5E1FD2">
+      <End Role="phieunhaphang" EntitySet="phieunhaphang" />
+      <End Role="chitietphieunhaphang" EntitySet="chitietphieunhaphang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chitietph__sanph__3E52440B" Association="Self.FK__chitietph__sanph__3E52440B">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="chitietphieunhaphang" EntitySet="chitietphieunhaphang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__chucvu__trangtha__267ABA7A" Association="Self.FK__chucvu__trangtha__267ABA7A">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="chucvu" EntitySet="chucvu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giohang__khachha__4BAC3F29" Association="Self.FK__giohang__khachha__4BAC3F29">
+      <End Role="khachhang" EntitySet="khachhang" />
+      <End Role="giohang" EntitySet="giohang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__giohang__sanpham__4CA06362" Association="Self.FK__giohang__sanpham__4CA06362">
+      <End Role="sanpham" EntitySet="sanpham" />
+      <End Role="giohang" EntitySet="giohang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoadon__khachhan__4222D4EF" Association="Self.FK__hoadon__khachhan__4222D4EF">
+      <End Role="khachhang" EntitySet="khachhang" />
+      <End Role="hoadon" EntitySet="hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoadon__nhanvien__412EB0B6" Association="Self.FK__hoadon__nhanvien__412EB0B6">
+      <End Role="nhanvien" EntitySet="nhanvien" />
+      <End Role="hoadon" EntitySet="hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__hoadon__trangtha__72C60C4A" Association="Self.FK__hoadon__trangtha__72C60C4A">
+      <End Role="trangthaihoadon" EntitySet="trangthaihoadon" />
+      <End Role="hoadon" EntitySet="hoadon" />
+    </AssociationSet>
+    <AssociationSet Name="FK__khachhang__trang__2D27B809" Association="Self.FK__khachhang__trang__2D27B809">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="khachhang" EntitySet="khachhang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__loaisanph__trang__300424B4" Association="Self.FK__loaisanph__trang__300424B4">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nhacungca__trang__36B12243" Association="Self.FK__nhacungca__trang__36B12243">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="nhacungcap" EntitySet="nhacungcap" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nhanvien__chucvu__29572725" Association="Self.FK__nhanvien__chucvu__29572725">
+      <End Role="chucvu" EntitySet="chucvu" />
+      <End Role="nhanvien" EntitySet="nhanvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__nhanvien__trangt__2A4B4B5E" Association="Self.FK__nhanvien__trangt__2A4B4B5E">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="nhanvien" EntitySet="nhanvien" />
+    </AssociationSet>
+    <AssociationSet Name="FK__phieugiao__hoado__48CFD27E" Association="Self.FK__phieugiao__hoado__48CFD27E">
+      <End Role="hoadon" EntitySet="hoadon" />
+      <End Role="phieugiaohang" EntitySet="phieugiaohang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__phieunhap__ncc_i__3A81B327" Association="Self.FK__phieunhap__ncc_i__3A81B327">
+      <End Role="nhacungcap" EntitySet="nhacungcap" />
+      <End Role="phieunhaphang" EntitySet="phieunhaphang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__phieunhap__nhanv__398D8EEE" Association="Self.FK__phieunhap__nhanv__398D8EEE">
+      <End Role="nhanvien" EntitySet="nhanvien" />
+      <End Role="phieunhaphang" EntitySet="phieunhaphang" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__loaisan__32E0915F" Association="Self.FK__sanpham__loaisan__32E0915F">
+      <End Role="loaisanpham" EntitySet="loaisanpham" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sanpham__trangth__33D4B598" Association="Self.FK__sanpham__trangth__33D4B598">
+      <End Role="trangthai" EntitySet="trangthai" />
+      <End Role="sanpham" EntitySet="sanpham" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

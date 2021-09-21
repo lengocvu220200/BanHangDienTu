@@ -1,0 +1,151 @@
+﻿@model BanHangDienTu.Models.khachhang
+
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_LayoutCustomize.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Checkout</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active">Checkout</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        <@using (Html.BeginForm("XacNhanThanhToan", "SanPham", FormMethod.Post, new { @class = "" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="checkout-address">
+                        <div class="title-left">
+                            <h3>Thông tin nhận hàng</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Tên người nhận *</label>
+                                <input type="text" class="form-control" name="phieugiaohang_tennguoinhan" id="tennguoinhan" placeholder="" value="@Model.khachhang_ten" required>
+                                <div class="invalid-feedback"> Valid first name is required. </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Số điện thoại *</label>
+                                <input type="number" class="form-control" name="phieugiaohang_sdtnguoinhan" id="sdt" placeholder="" value="@Model.khachhang_sdt" required>
+                                <div class="invalid-feedback"> Valid Phone Number is required. </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address">Địa chỉ *</label>
+                            <input type="text" class="form-control" name="phieugiaohang_diachinguoinhan" id="diachi" placeholder="" value="@Model.khachhang_diachi" required>
+                            <div class="invalid-feedback"> Please enter your shipping address. </div>
+                        </div>
+
+                        <hr class="mb-4">
+
+                        <div class="title-left">
+                            <h3>Phương thức thanh toán</h3>
+                        </div>
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="credit">Thanh toán khi nhận hàng</label>
+                            </div>
+
+                        </div>
+                        <hr class="mb-4">
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="odr-box">
+                                <div class="title-left">
+                                    <a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false"><h3>Sản phẩm đã chọn <i style="font-size: 12px; color:blue">(Nhấn vào đây để xem chi tiết)</i></h3></a>
+                                </div>
+
+                                <div class="mt-3 collapse review-form-box" id="formRegister">
+                                    <div class="rounded p-2 bg-light" style="overflow-y: hidden; overflow-y: auto; width: auto; height: 300px;">
+                                        @{ int tongtien = 0; }
+                                        @foreach (var item in ViewBag.SanPham)
+                                        {
+                                            <div class="media mb-2 border-bottom">
+                                                <div class="media-body">
+                                                    <a href="detail.html"> @item.sanpham.sanpham_ten</a>
+                                                    <div class="small text-muted">Giá: @String.Format("{0:0,0}", item.sanpham.sanpham_dongia) VNĐ<span class="mx-2">|</span> Số lượng: @item.giohang_soluong <span class="mx-2">|</span> Thành tiền: @String.Format("{0:0,0}", item.sanpham.sanpham_dongia * item.giohang_soluong) VNĐ</div>
+                                                </div>
+                                            </div>
+                                            <p class="hide">@(tongtien += (item.sanpham.sanpham_dongia * item.giohang_soluong))</p>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="order-box">
+                                <div class="title-left">
+                                    <h3>Hóa đơn</h3>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="font-weight-bold">Chi tiết</div>
+                                    <div class="ml-auto font-weight-bold">Tổng</div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="d-flex">
+                                    <h4>Thành tiền</h4>
+                                    <div class="ml-auto font-weight-bold"> @String.Format("{0:0,0}", tongtien) VNĐ</div>
+                                </div>
+                                <div class="d-flex">
+                                    <h4>Khuyến mãi</h4>
+                                    <div class="ml-auto font-weight-bold"> 0 </div>
+                                </div>
+                                <hr class="my-1">
+
+                                <div class="d-flex">
+                                    <h4>Phí vận chuyển</h4>
+                                    <div class="ml-auto font-weight-bold"> Free </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex gr-total">
+                                    <h5>Tổng tiền</h5>
+                                    <div class="ml-auto h5"> @String.Format("{0:0,0}", tongtien) VNĐ</div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex shopping-box"> <button type="submit"  class="ml-auto btn hvr-hover" style="color:white">Đặt hàng</button> </div>
+                    </div>
+                </div>
+
+
+            </div>
+        }
+    </div>
+</div>
+<!-- End Cart -->
+<!--<script>
+    function ThanhToan() {
+
+        var phieugiaohang_tennguoinhan = $('#tennguoinhan').val();
+        let phieugiaohang_sdtnguoinhan = Number($('#sdt').val());
+        //var email = $('#email').val();
+        var phieugiaohang_diachinguoinhan = $('#diachi').val();
+        window.location = "/SanPham/XacNhanThanhToan/" + phieugiaohang_tennguoinhan + "?phieugiaohang_sdtnguoinhan=" + phieugiaohang_sdtnguoinhan + "&phieugiaohang_diachinguoinhan=" + phieugiaohang_diachinguoinhan;
+    }
+</script>--->

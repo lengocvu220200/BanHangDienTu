@@ -1,0 +1,108 @@
+﻿@model BanHangDienTu.Models.chitiethoadon
+
+@{
+    ViewBag.Title = "DonHangDaDat";
+    Layout = "~/Views/Shared/_LayoutCustomize.cshtml";
+}
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Đơn hàng đã đặt</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("XemGioHang","SanPham")">Quay lại giỏ hàng</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-6 offset-3 mb-3">
+    <div class="row">
+        <div class="table-main table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Ngày đặt hàng</th>
+                        <th>Tổng tiền(VNĐ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+@{ int s = 1;}
+@foreach (var hd in ViewBag.HD)
+{
+    
+    <div class="col-sm-6 col-lg-6 offset-3 mb-3">
+        <div class="row">
+
+            <div class="col-md-12 col-lg-12">
+                <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+                    <div class="list-group-collapse sub-men">
+
+                        <a class="list-group-item list-group-item-action" href="#@s" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">
+                            <div class="row">
+                                <span class="col-sm-4"> @hd.hoadon_id</span><span class="col-sm-4">@hd.hoadon_ngaylap</span><span class="col-sm-4">@hd.hoadon_tongtien</span>
+                                <small class="text-muted"></small>
+                            </div>
+                        </a>
+
+                        <div class="collapse" id="@s" data-parent="#list-group-men">
+                            <div class="table-main table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr style="background-color:#009966">
+                                            <th>Hình ảnh</th>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Số lượng</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.ChiTietHD)
+                                        {
+
+
+                                            if (item.hoadon_id == hd.hoadon_id)
+                                            {
+
+                                                <tr>
+                                                    <td class="thumbnail-img">
+                                                        <a href="@Url.Action("ChiTietSanPham","SanPham", new { id = item.sanpham.sanpham_id } )">
+                                                            <img class="img-fluid" src="/asset/images/@item.sanpham.sanpham_urlhinhanh" alt="" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="name-pr">
+                                                        <a href="@Url.Action("ChiTietSanPham","SanPham", new { id = item.sanpham.sanpham_id } )">
+                                                            @item.sanpham.sanpham_ten
+                                                        </a>
+                                                    </td>
+                                                    <td class="price-pr">
+                                                        <p>@item.chitiethd_soluong</p>
+                                                    </td>
+                                                    <td class="total-pr">
+                                                        <p>@item.chitiethd_thanhtien</p>
+                                                    </td>
+                                                </tr>
+                                            }
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    s++;
+}
+
+<!-- End Shop Page -->
